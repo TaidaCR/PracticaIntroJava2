@@ -9,7 +9,7 @@ public class Main {
         //CREO LISTADO PRODUCTOS DISPONIBLES
         List<Producto> listaProductos = new ArrayList<>();
         CuentaSupermercado cuenta = new CuentaSupermercado (listaProductos);
-        Validador validador = new Validador();
+        Validador validador = new Validador(listaProductos);
 
         //AÑADO PRODUCTOS Y PRECIO
         listaProductos.add(new Producto("Leche", 1.20));
@@ -35,8 +35,7 @@ public class Main {
 
         double i=0;
         while (i<numProd){
-            System.out.print("Introduce nombre del producto escaneado: ");
-            String productoEscaneado = scanner.nextLine();
+            String productoEscaneado = validador.validadorProductos();
             System.out.print("Introduce numero de unidades: ");
             Double unidadesProducto = validador.validarUnidadesTotales(i, numProd);
             //scanner.nextLine();

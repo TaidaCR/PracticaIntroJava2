@@ -52,7 +52,17 @@ public class CuentaSupermercado {
             String unidadesString = Double.toString(unidades);
 
             System.out.printf(nombre+"--"+unidadesString+"--"+"\n");
+
         }
+    }
+
+    public String imprimirTicket1(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Ticket número: -INTRODUCIR NUMERO RANDOM");
+        sb.append("Producto       Ud.     PU      Total");
+        sb.append("-----------------------------");
+
+
     }
 }   
 
