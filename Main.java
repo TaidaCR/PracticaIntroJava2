@@ -29,9 +29,8 @@ public class Main {
         }
 
         //AÑADIR NUM PRODUCTOS
-        System.out.print("Introduce numero de unidades a comprar: ");
-        double numProd = scanner.nextDouble();
-        scanner.nextLine();
+        //System.out.print("Introduce numero de unidades a comprar: ");
+        double numProd = validador.validadorNumProd();
 
         double i=0;
         while (i<numProd){
@@ -43,7 +42,7 @@ public class Main {
             cuenta.addProducto(productoEscaneado, unidadesProducto);
             i=i+unidadesProducto;
         }
-        cuenta.imprimirTicket();
+        System.out.print(cuenta.imprimirTicket1());
     
     }
 }
