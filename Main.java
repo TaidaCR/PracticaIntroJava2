@@ -21,7 +21,7 @@ public class Main {
         listaProductos.add(new Producto("Pasta", 2.50));
         listaProductos.add(new Producto("Yogurt", 2.25));
         
-        System.out.print("LISTA DE PRODUCTOS DISPONIBLES");
+        System.out.print("LISTA DE PRODUCTOS DISPONIBLES \n");
 
         //RECORRE LA LISTA REALIZADA Y LA IMPRIME PARA VER LOS PRODUCTOS QUE HAY
         for (Producto producto : listaProductos){
@@ -29,21 +29,16 @@ public class Main {
         }
 
         //AÑADIR NUM PRODUCTOS
-        //System.out.print("Introduce numero de unidades a comprar: ");
         double numProd = validador.validadorNumProd();
 
         double i=0;
         while (i<numProd){
             String productoEscaneado = validador.validadorProductos();
-            System.out.print("Introduce numero de unidades: ");
             Double unidadesProducto = validador.validarUnidadesTotales(i, numProd);
-            //scanner.nextLine();
-            
             cuenta.addProducto(productoEscaneado, unidadesProducto);
             i=i+unidadesProducto;
         }
         System.out.print(cuenta.imprimirTicket1());
-    
     }
 }
          

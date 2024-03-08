@@ -70,11 +70,11 @@ public class CuentaSupermercado {
                 }
             }
             precioTotalUd = precio*unidades;
-            sb.append(String.format("%-15s%-8.2f%-8.2f%-8.2f\n", nombre, unidades, precio, precioTotalUd));
+            sb.append(String.format("%-15s%-8.2f%-8.2f%-3.2f€\n", nombre, unidades, precio, precioTotalUd));
             precioTotalCuenta = precioTotalCuenta + precioTotalUd;
         }
         sb.append("------------------------------------\n");
-        sb.append("Total:                         "+ precioTotalCuenta+"\n");
+        sb.append(String.format("Total:                         %.2f€\n", precioTotalCuenta));
         sb.append("   \n");
         return sb.toString();
     }

@@ -4,8 +4,6 @@ public class Producto {
     
     private double precioUnitario;
     private String nombreProducto;
-    
-    
 
     public Producto(String nombreProducto, double precioUnitario){
         this.precioUnitario = precioUnitario;

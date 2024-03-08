@@ -12,15 +12,15 @@ public class Validador {
     //ARREGLAR. SALE EL MENSAJE DOS VECES
     public Double validarUnidadesTotales(Double i, Double numProd){
         Scanner input = new Scanner(System.in);
-        Double unidadesProd = input.nextDouble();
-        Double unidadesTotales=unidadesProd+i;
+        Double unidadesProd = 0.0;
+        Double unidadesTotales = 0.0;
         boolean siguePidiendo=true;
         
         while(siguePidiendo){
             try{
                 System.out.print("Introduce numero de unidades: ");
-                input.nextLine();
                 unidadesProd=input.nextDouble();
+                unidadesTotales=unidadesProd+i;
                 siguePidiendo = false;
             }catch(InputMismatchException e){
                 System.out.print("El número debe ser un entero. ");
@@ -28,7 +28,6 @@ public class Validador {
                 siguePidiendo = true;
             }
         }
-
         if (numProd >0 && numProd <500){
             while (unidadesTotales>numProd){
                 System.out.print("El número de items excede el declarado. Introduzca un número menor: ");
@@ -41,10 +40,7 @@ public class Validador {
 
         }
         return unidadesProd;
-}
-        
-        
-    
+    }
 
     public Double validadorNumProd (){
         Scanner input = new Scanner(System.in);
