@@ -1,10 +1,9 @@
-import java.util.HashMap;
-
 public class Producto {
     
     private double precioUnitario;
     private String nombreProducto;
 
+    //CONSTRUCTOR
     public Producto(String nombreProducto, double precioUnitario){
         this.precioUnitario = precioUnitario;
         this.nombreProducto = nombreProducto;

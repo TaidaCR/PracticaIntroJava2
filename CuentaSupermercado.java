@@ -1,34 +1,34 @@
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Map;
 import java.util.Random;
 
 public class CuentaSupermercado {
-    Scanner scanner = new Scanner(System.in);
     String nombreProd;
-    Double unidadesProd;
+    Double unidadesProd=0.0;
 
     //PARA DAR ACCESO A LA ARRAY DE MAIN
     private List<Producto>listaProductos;
     
     HashMap <String, Double> numUnidades = new HashMap<>();
+    Producto producto = new Producto(nombreProd,unidadesProd);
 
+    //CONSTRUCTOR
     public CuentaSupermercado(List<Producto> listaProductos){
         this.listaProductos = listaProductos;
     }
 
-
-    public double precioTotal(double numUnidades, double precioProducto){
-        return numUnidades*precioProducto;
+    //CALCULA PRECIO TOTAL UNITARIO
+    public double precioTotalUnidades(Double precioProducto, Double unidades){
+        return unidades*precioProducto;
     }
 
+    //AÑADE PRODUCTOS A LA CUENTA
     public void addProducto(String productoEscaneado, Double unidadesProducto){
         boolean siguePidiendo = true;
         while (siguePidiendo==true){
             for (Producto producto : listaProductos){
                 String prod1 = producto.getNombre();
-                //SI EL PRODUCTO ESTA EN LA LISTAPRODUCTOS LO AÑADE, SI NO LO PIDE DE NUEVO
                 if (prod1.equals(productoEscaneado)){
                     if (numUnidades.containsKey(productoEscaneado)){
                         Double unidadesYaAñadidas = numUnidades.get(productoEscaneado);
@@ -38,20 +38,15 @@ public class CuentaSupermercado {
                         numUnidades.put(productoEscaneado,unidadesProducto);
                     }
                     siguePidiendo=false;
-                    break;
-                }else{
-                    siguePidiendo=true;
                 }
             }
         }
     }
 
-    public String imprimirTicket1(){
+    //IMPRIME EL TICKET
+    public String imprimirTicket(){
         StringBuilder sb = new StringBuilder();
         Double precioTotalCuenta = 0.0;
-        Double precioTotalUd = 0.0;
-        Double unidades = 0.0;
-        Double precio = 0.0;
         Random random = new Random ();
         int numeroTicket = random.nextInt(1000);
         sb.append("   \n");
@@ -62,16 +57,16 @@ public class CuentaSupermercado {
         sb.append("   \n");
         for (Map.Entry<String, Double> entry : numUnidades.entrySet()){
             String nombre = entry.getKey();
-            unidades = entry.getValue();
+            Double unidades = entry.getValue();
+            Double precioProducto = 0.0;
             for (Producto producto: listaProductos){
                 if (producto.getNombre().equalsIgnoreCase(nombre)){
-                    precio = producto.getPrecio();
-                    break;
+                    precioProducto = producto.getPrecio();
                 }
             }
-            precioTotalUd = precio*unidades;
-            sb.append(String.format("%-15s%-8.2f%-8.2f%-3.2f€\n", nombre, unidades, precio, precioTotalUd));
-            precioTotalCuenta = precioTotalCuenta + precioTotalUd;
+            Double precioTotalUd = precioTotalUnidades(precioProducto, unidades);
+            sb.append(String.format("%-15s%-8.2f%-8.2f%-3.2f€\n", nombre, unidades, precioProducto, precioTotalUd));
+            precioTotalCuenta += precioTotalUd;
         }
         sb.append("------------------------------------\n");
         sb.append(String.format("Total:                         %.2f€\n", precioTotalCuenta));

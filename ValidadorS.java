@@ -1,15 +1,16 @@
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-public class Validador {
+public class ValidadorS {
+    
+    //PARA DAR ACCESO A LA ARRAY DE MAIN
     private List<Producto>listaProductos;
 
-    public Validador(List<Producto> listaProductos){
+    public ValidadorS(List<Producto> listaProductos){
         this.listaProductos = listaProductos;
     }
 
-    //ARREGLAR. SALE EL MENSAJE DOS VECES
+    //VALIDA QUE NO SE INTRODUZCA MAS UNIDADES DE LAS DECLARADAS AL INICIO
     public Double validarUnidadesTotales(Double i, Double numProd){
         Scanner input = new Scanner(System.in);
         Double unidadesProd = 0.0;
@@ -25,7 +26,6 @@ public class Validador {
             }catch(InputMismatchException e){
                 System.out.print("El número debe ser un entero. ");
                 input.next();
-                siguePidiendo = true;
             }
         }
         if (numProd >0 && numProd <500){
@@ -42,6 +42,7 @@ public class Validador {
         return unidadesProd;
     }
 
+    //VALIDA QUE EL NUMERO SEA UN ENTERO
     public Double validadorNumProd (){
         Scanner input = new Scanner(System.in);
         int numProd = 0;
@@ -54,13 +55,13 @@ public class Validador {
             }catch (InputMismatchException e){
                 System.out.print("El número debe ser un entero. ");
                 input.next();
-                siguePidiendo = true;
             }
         }
         double numProdDouble = (double) numProd;
         return numProdDouble;
     }
 
+    //VALIDA QUE EL PRODUCTO ESTE EN LA LISTA
     public String validadorProductos (){
         Scanner input = new Scanner(System.in);
         boolean siguePidiendo = true;

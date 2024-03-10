@@ -1,15 +1,13 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 
-public class Main {
+public class MainS {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner (System.in);
+        
         //CREO LISTADO PRODUCTOS DISPONIBLES
         List<Producto> listaProductos = new ArrayList<>();
         CuentaSupermercado cuenta = new CuentaSupermercado (listaProductos);
-        Validador validador = new Validador(listaProductos);
+        ValidadorS validador = new ValidadorS(listaProductos);
 
         //AÑADO PRODUCTOS Y PRECIO
         listaProductos.add(new Producto("Leche", 1.20));
@@ -28,9 +26,10 @@ public class Main {
             System.out.printf(producto.getNombre() + " - " + producto.getPrecio() + "\n");
         }
 
-        //AÑADIR NUM PRODUCTOS
+        //RECOGER EL NUMERO DE PRODUCTOS TOTAL COMPRADOS
         double numProd = validador.validadorNumProd();
 
+        //AÑADE LOS PRODUCTOS "ESCANEADOS" A UNA NUEVA LISTA DONDE ACUMULA LAS UNIDADES
         double i=0;
         while (i<numProd){
             String productoEscaneado = validador.validadorProductos();
@@ -38,7 +37,11 @@ public class Main {
             cuenta.addProducto(productoEscaneado, unidadesProducto);
             i=i+unidadesProducto;
         }
-        System.out.print(cuenta.imprimirTicket1());
+
+        //IMPRIME EL TICKET
+        System.out.print(cuenta.imprimirTicket());
+
+
     }
 }
          
