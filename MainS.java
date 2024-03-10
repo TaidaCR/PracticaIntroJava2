@@ -19,12 +19,15 @@ public class MainS {
         listaProductos.add(new Producto("Pasta", 2.50));
         listaProductos.add(new Producto("Yogurt", 2.25));
         
+        System.out.print("    \n");
         System.out.print("LISTA DE PRODUCTOS DISPONIBLES \n");
+        System.out.print("------------------------------\n");
 
         //RECORRE LA LISTA REALIZADA Y LA IMPRIME PARA VER LOS PRODUCTOS QUE HAY
         for (Producto producto : listaProductos){
-            System.out.printf(producto.getNombre() + " - " + producto.getPrecio() + "\n");
+            System.out.printf(producto.getNombre() + " - " + producto.getPrecio() + "€\n");
         }
+        System.out.print("    \n");
 
         //RECOGER EL NUMERO DE PRODUCTOS TOTAL COMPRADOS
         double numProd = validador.validadorNumProd();
@@ -40,8 +43,6 @@ public class MainS {
 
         //IMPRIME EL TICKET
         System.out.print(cuenta.imprimirTicket());
-
-
     }
 }
          

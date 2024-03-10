@@ -65,11 +65,10 @@ public class ValidadorS {
     public String validadorProductos (){
         Scanner input = new Scanner(System.in);
         boolean siguePidiendo = true;
-        String productoEscaneado="";
         String prod="";
         while (siguePidiendo==true){
             System.out.print("Introduce nombre del producto escaneado: ");
-            productoEscaneado = input.nextLine();
+            String productoEscaneado = input.nextLine();
             
             for (Producto producto : listaProductos){
                 if (producto.getNombre().equalsIgnoreCase(productoEscaneado)){
